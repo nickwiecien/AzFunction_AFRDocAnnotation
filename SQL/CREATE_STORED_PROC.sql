@@ -1,0 +1,4 @@
+CREATE PROCEDURE TruncateRecords
+AS   
+    TRUNCATE TABLE [dbo].[DELIVERY_DOC_DETAILS];  
+GO  
