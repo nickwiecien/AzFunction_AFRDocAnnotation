@@ -12,8 +12,8 @@ Before running this project, create a `local.settings.json` file in the root dir
 | WOUND_STORAGE_CONNECTION_STRING | Connection string to a storage account that will be used to upload wound images (expected container name: `images`)  and export modified\annotated images (expected container name: `analysis`) |
 | STORAGE_ACCOUNT_NAME     | Name of an Azure Storage Account which holds PDF documents which have been parsed by Azure Form Recognizer |
 | STORAGE_ACCOUNT_KEY     | Key for Azure Storage Account referenced above |
-| DOCUMENT_CONTAINER_NAME     | Name of the blob container which contains the PDF documents which have been parsed by AFR |
-| ANNOTATION_CONTAINER_NAME     | Name of the blob container where annotated images should be saved (should be separate from the storage ) |
+| STORAGE_ACCOUNT_CONTAINER     | Name of the blob container which contains the PDF documents which have been parsed by AFR |
+| ANNOTATION_CONTAINER     | Name of the blob container where annotated images should be saved (should be separate from the storage ) |
 
 ## Modifying the Function
 The function can be modified by updating the code within the `./ParseAndAnnotate/init.py` file. 
