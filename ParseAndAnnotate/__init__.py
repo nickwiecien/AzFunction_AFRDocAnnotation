@@ -74,7 +74,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         hold = image.get_pixmap(matrix=magnify)
         hold.save(f'{tempdir}/{blob_name}'.replace('.pdf', '_ANNOTATED.pdf').replace('.pdf', '.png'))
 
-    final_result['ANNOTATED_FILENAME'] = f'annotations/{blob_name}'.replace('.pdf', '_ANNOTATED.pdf').replace('.pdf', '.png')
+    # final_result['ANNOTATED_FILENAME'] = f'annotations/{blob_name}'.replace('.pdf', '_ANNOTATED.pdf').replace('.pdf', '.png')
+    final_result['ANNOTATED_FILENAME'] = f'annotations/{blob_name}'.replace('.pdf', '_ANNOTATED.pdf')
 
     reader = PdfReader(f'{tempdir}/{blob_name}'.replace('.pdf', '_ANNOTATED.pdf'))
 
@@ -131,6 +132,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     files = os.listdir(f'{tempdir}')
     for file in files:
         if '.png' in file:
+            data = open(f'{tempdir}/{file}', 'rb').read()
+            container_client.upload_blob(file, data, overwrite=True)
+        if '_ANNOTATED.pdf' in file:
             data = open(f'{tempdir}/{file}', 'rb').read()
             container_client.upload_blob(file, data, overwrite=True)
 
